@@ -1,0 +1,25 @@
+List of used articles for this repo:
+-https://www.google.com/search?q=fedora+sliverblue+nvidia+drivers&oq=fedora+sliverblue+nvidia+drivers&aqs=chrome..69i57.10346j0j7&sourceid=chrome&ie=UTF-8
+-https://nudesystems.com/how-to-install-nvidia-drivers-in-fedora-silverblue/
+-https://medium.com/@egee_irl/install-nvidia-drivers-on-silverblue-edd499244aa2
+-https://www.google.com/search?q=fedora+sliverblue+flatpaks&oq=fedora+sliverblue+flatpaks&aqs=chrome..69i57.7115j0j7&sourceid=chrome&ie=UTF-8
+-https://www.makeuseof.com/fedora-silverblue-getting-started/
+-https://www.google.com/search?q=fedora+sliverblue+steam+games&oq=fedora+sliverblue+steam&aqs=chrome.0.69i59j69i57.4921j0j7&sourceid=chrome&ie=UTF-8
+-https://fedoramagazine.org/set-up-fedora-silverblue-gaming-station/
+-https://www.reddit.com/r/Fedora/comments/o6piy1/anyone_game_on_silverblue/
+-https://www.google.com/search?q=fedora+sliverblue+rpms&oq=fedora+sliverblue+rpms&aqs=chrome..69i57.5249j0j7&sourceid=chrome&ie=UTF-8
+-https://computingforgeeks.com/manage-packages-on-fedora-silverblue-linux/
+-https://docs.fedoraproject.org/en-US/fedora-silverblue/technical-information/
+-https://www.reddit.com/r/Fedora/comments/m7y4xp/fedora_silverblue_rpm/
+-https://fedoramagazine.org/how-to-rebase-to-fedora-linux-35-on-silverblue/
+-https://www.google.com/search?q=ansible+os-tree&oq=ansible+os-tree&aqs=chrome..69i57.5231j0j7&sourceid=chrome&ie=UTF-8
+-https://docs.ansible.com/ansible/latest/collections/community/general/rpm_ostree_pkg_module.html
+-https://docs.ansible.com/ansible/latest/collections/community/general/flatpak_module.html
+-https://www.google.com/search?q=ansible+add+flathub&oq=ansible+add+flathub&aqs=chrome..69i57.4258j0j7&sourceid=chrome&ie=UTF-8
+-https://docs.ansible.com/ansible/latest/collections/community/general/flatpak_remote_module.html
+-https://www.fosslinux.com/42406/how-to-install-microsoft-truetype-fonts-on-fedora.htm
+-https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+
+-https://opensource.com/article/18/3/manage-workstation-ansible
+-https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2
+-https://opensource.com/article/18/5/manage-your-workstation-ansible-part-3
