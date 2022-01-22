@@ -1,0 +1,12 @@
+galaxy_info:
+  author: Franciszek Łopuszański
+  description: Installs desired software packages
+  company: None
+
+  license: MIT
+
+  min_ansible_version: 5.1 
+
+  galaxy_tags: []
+
+dependencies: []
