@@ -1,0 +1,5 @@
+private:
+  hosts:
+    matebook-d16:
+      ansible_host: "::1"
+      remote_user: "frankoslaw"

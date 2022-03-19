@@ -1,0 +1,89 @@
+- hosts: private
+  tasks:
+    - name: Add google chrome repo
+      become: true
+      copy:
+        content: |
+          [google-chrome] 
+          name=google-chrome
+          baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64 
+          enabled=1
+          gpgcheck=1
+          gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+        dest: /etc/yum.repos.d/google-chrome.repo
+
+    #Enable rpmfusion
+    - name: Enable rpmfusion( silverblue )
+      become: true
+      command:
+        argv:
+          - /usr/bin/rpm-ostree 
+          - install
+          - --idempotent
+          - --unchanged-exit-77
+          - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm
+          - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm
+      register: ostree
+      failed_when: not ( ostree.rc == 77 or ostree.rc == 0 )
+      changed_when: ostree.rc != 77
+
+    - name: Install native packages( silverblue )
+      become: true
+      command:
+        argv:
+          - /usr/bin/rpm-ostree 
+          - install
+          - --idempotent
+          - --unchanged-exit-77
+          - neofetch
+          - google-chrome-stable
+      register: ostree
+      failed_when: not ( ostree.rc == 77 or ostree.rc == 0 )
+      changed_when: ostree.rc != 77
+
+    - name: Add the flathub flatpak repository
+      flatpak_remote:
+        name: "{{ item.name }}"
+        method: user
+        state: present
+        flatpakrepo_url: "{{ item.url }}"
+      loop:
+        - { name: "flathub", url: "https://dl.flathub.org/repo/flathub.flatpakrepo" }
+        - { name: "flathub-beta", url: "https://flathub.org/beta-repo/flathub-beta.flatpakrepo" }
+
+    - name: Install flatpak components
+      become: true
+      flatpak:
+        name:
+          - org.gnome.Platform.Compat.i386/x86_64/41rc
+          - org.freedesktop.Platform.GL32.default/x86_64/21.08
+          - org.freedesktop.Platform.GL.default/x86_64/21.08
+        state: present
+
+    - name: Install user flatpaks
+      flatpak:
+        name: 
+          - com.slack.Slack
+          - io.atom.Atom
+          - org.libreoffice.LibreOffice
+          - org.signal.Signal
+          - com.discordapp.Discord
+          - com.valvesoftware.Steam
+          - com.github.Matoking.protontricks
+          - net.davidotek.pupgui2
+          - com.belmoussaoui.Authenticator
+          - com.heroicgameslauncher.hgl
+          - com.visualstudio.code
+          - org.gaphor.Gaphor
+          - nl.hjdskes.gcolor3
+          - com.sindresorhus.Caprine
+          - com.parsecgaming.parsec
+        method: user
+        state: present
+
+    - name: Instal user flatpaks( beta )
+      flatpak:
+        name: net.lutris.Lutris//beta
+        remote: flathub-beta
+        method: user
+        state: present
