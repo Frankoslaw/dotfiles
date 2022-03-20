@@ -78,6 +78,14 @@
           - nl.hjdskes.gcolor3
           - com.sindresorhus.Caprine
           - com.parsecgaming.parsec
+          - com.anydesk.Anydesk
+          - com.github.tchx84.Flatseal
+          - com.usebottles.bottles
+          - org.videolan.VLC
+          - io.mpv.Mpv
+          - com.obsproject.Studio
+          - org.gnome.Extensions
+          - org.gnome.Boxes
         method: user
         state: present
 
@@ -87,3 +95,36 @@
         remote: flathub-beta
         method: user
         state: present
+
+    - name: Create toolbox's
+      command:
+        argv:
+          - toolbox
+          - create
+          - -y
+          - "{{ item }}"
+      loop:
+        - development-general
+        - development-kernel
+        - wine
+        - latex
+        - general
+      register: toolbox
+      failed_when: not ( toolbox.rc == 1 or toolbox.rc == 0 )
+      changed_when: toolbox.rc != 1
+
+    - name: Install toolbox packages
+      command:
+        argv:
+          - toolbox
+          - run
+          - -c
+          - "{{ item.name }}"
+          - sudo
+          - dnf
+          - install
+          - -y
+          - "{{ item.packages }}"
+      loop:
+        - { name: "development-general", packages: "neofetch" }
+        - { name: "general", packages: "gnome-tweaks" }
